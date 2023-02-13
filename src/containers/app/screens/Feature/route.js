@@ -26,7 +26,7 @@ export const childRoutes = [
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
-            return import('./pages/Demo/Admin/PersonalImformation');
+            return import('./pages/Demo/Admin/ManageReaders/PersonalImformation');
         }),
     },
     {
@@ -36,7 +36,7 @@ export const childRoutes = [
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
-            return import('./pages/Demo/Admin/Search');
+            return import('./pages/Demo/Admin/ManageReaders/Search');
         }),
     },
     {
@@ -46,7 +46,7 @@ export const childRoutes = [
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
-            return import('./pages/Demo/User/SettingAccount');
+            return import('./pages/Demo/User/UserReaders/SettingAccount');
         }),
     },
     {
@@ -56,7 +56,7 @@ export const childRoutes = [
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
-            return import('./pages/Demo/User/Concerns');
+            return import('./pages/Demo/User/UserReaders/Concerns');
         }),
     },
 ];
