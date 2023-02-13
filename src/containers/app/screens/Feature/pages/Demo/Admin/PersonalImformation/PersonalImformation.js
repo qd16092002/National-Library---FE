@@ -1,4 +1,4 @@
-import { LockOutlined, SearchOutlined, SettingOutlined, UnlockOutlined } from '@ant-design/icons';
+import { FormOutlined, LockOutlined, SearchOutlined, SettingOutlined, UnlockOutlined } from '@ant-design/icons';
 import { Button, Col, Input, Row, Select, DatePicker, Space } from 'antd';
 import classNames from 'classnames/bind';
 import React from 'react';
@@ -132,7 +132,7 @@ function Search(props) {
                             <Link to={'/setting'} style={{ display: 'block', width: '450px' }}>
                                 <div className="bottom-left" onClick={handleSubmitClick}>
                                     <AppButton type="search">
-                                        <SettingOutlined />
+                                        <FormOutlined />
                                         Chỉnh sửa
                                     </AppButton>
                                 </div>
