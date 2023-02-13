@@ -1,5 +1,5 @@
-import { CheckOutlined, LockOutlined, SearchOutlined, SettingOutlined, UnlockOutlined } from '@ant-design/icons';
-import { Button, Col, Input, Row, Select, DatePicker, Space } from 'antd';
+import { CheckOutlined } from '@ant-design/icons';
+import { Col, Row, DatePicker } from 'antd';
 import classNames from 'classnames/bind';
 import React from 'react';
 import AppButton from '~/components/AppButton';
@@ -7,7 +7,7 @@ import AppDateInput from '~/components/AppDateInput';
 import AppForm from '~/components/AppForm';
 import AppInput from '~/components/AppInput';
 import AppSelectInput from '~/components/AppSelectInput';
-import styles from './Demo.module.sass';
+import styles from './Concerns.module.sass';
 const onChange = (value) => {
     console.log(`selected ${value}`);
 };
@@ -16,7 +16,7 @@ const onSearch = (value) => {
 };
 const { RangePicker } = DatePicker;
 const cx = classNames.bind(styles);
-function Demo(props) {
+function Concerns(props) {
     const onSubmit = (data) => {
         console.log(data);
     };
@@ -96,4 +96,4 @@ function Demo(props) {
     );
 }
 
-export default Demo;
+export default Concerns;

@@ -1,13 +1,13 @@
-import { LockOutlined, SearchOutlined, SettingOutlined, UnlockOutlined } from '@ant-design/icons';
-import { Button, Col, Input, Row, Select, DatePicker, Space } from 'antd';
+import { Col, Row, DatePicker } from 'antd';
+import { CheckOutlined } from '@ant-design/icons';
 import classNames from 'classnames/bind';
 import React from 'react';
-import AppButton from '~/components/AppButton';
-import AppDateInput from '~/components/AppDateInput';
-import AppForm from '~/components/AppForm';
 import AppInput from '~/components/AppInput';
 import AppSelectInput from '~/components/AppSelectInput';
-import styles from './PersonalImformation.module.sass';
+import styles from './SettingAccount.module.sass';
+import AppForm from '~/components/AppForm';
+import AppDateInput from '~/components/AppDateInput';
+import AppButton from '~/components/AppButton';
 const onChange = (value) => {
     console.log(`selected ${value}`);
 };
@@ -16,36 +16,14 @@ const onSearch = (value) => {
 };
 const { RangePicker } = DatePicker;
 const cx = classNames.bind(styles);
-function Search(props) {
+function SettingAccount(props) {
     const onSubmit = (data) => {
         console.log(data);
     };
     const handleSubmitClick = () => {};
     return (
         <div>
-            <div className={cx('header')}>Thông tin cá nhân</div>
-            <AppForm onSubmit={onSubmit} className={cx('form')}>
-                <div className={cx('search')}>
-                    <Row>
-                        <Col
-                            span={8}
-                            style={{
-                                paddingBottom: 10,
-                            }}
-                        >
-                            <AppInput className="search" name="id" placeholder="Nhập mã độc giả muốn xem" />
-                        </Col>
-                        <Col span={1}></Col>
-                        <Col span={8}>
-                            <AppButton type="search">
-                                <SearchOutlined />
-                                Search
-                            </AppButton>
-                        </Col>
-                    </Row>
-                </div>
-            </AppForm>
-
+            <div className={cx('header')}>Chỉnh sửa thông tin cá nhân</div>
             <div className={cx('imformation')}>
                 <AppForm onSubmit={onSubmit} className={cx('form')}>
                     <Row gutter={[24, 12]}>
@@ -74,7 +52,7 @@ function Search(props) {
                                 <Col xs={8}>Email</Col>
                                 <Col xs={16}>
                                     <div className={cx('input')}>
-                                        <AppInput name="email" placeholder="Email" />
+                                        <AppInput name="email" placeholder="Nhập Email" />
                                     </div>
                                 </Col>
                             </Row>
@@ -104,34 +82,18 @@ function Search(props) {
                                 <Col xs={8}>Số điện thoại</Col>
                                 <Col xs={16}>
                                     <div className={cx('input')}>
-                                        <AppInput name="phonenumber" placeholder="Số điện thoại" />
+                                        <AppInput name="phonenumber" placeholder="Nhập Số điện thoại" />
                                     </div>
                                 </Col>
                             </Row>
                         </Col>
                     </Row>
                     <Row>
-                        <Col span={8}>
-                            <div className="bottom-left" onClick={handleSubmitClick}>
+                        <Col span={24}>
+                            <div className="bottom-right" onClick={handleSubmitClick}>
                                 <AppButton type="search">
-                                    <LockOutlined />
-                                    Khóa tài khoản
-                                </AppButton>
-                            </div>
-                        </Col>
-                        <Col span={8}>
-                            <div className="bottom-left" onClick={handleSubmitClick}>
-                                <AppButton type="search">
-                                    <UnlockOutlined />
-                                    Mở tài khoản
-                                </AppButton>
-                            </div>
-                        </Col>
-                        <Col span={8}>
-                            <div className="bottom-left" onClick={handleSubmitClick}>
-                                <AppButton type="search">
-                                    <SettingOutlined />
-                                    Chỉnh sửa
+                                    <CheckOutlined />
+                                    Cập nhật thông tin
                                 </AppButton>
                             </div>
                         </Col>
@@ -142,4 +104,4 @@ function Search(props) {
     );
 }
 
-export default Search;
+export default SettingAccount;
