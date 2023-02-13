@@ -42,8 +42,8 @@ export default function (props) {
                     }}
                 >
                     <span className="NaL__text">
-                        <div></div>
-                        <div></div>
+                        <div>NaL</div>
+                        <div>NaL</div>
                     </span>
                 </div>
                 <span
@@ -55,7 +55,7 @@ export default function (props) {
                         userSelect: 'none',
                     }}
                 >
-                    NaL Manager
+                    Manager
                 </span>
             </div>
 
