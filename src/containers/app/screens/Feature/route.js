@@ -39,4 +39,24 @@ export const childRoutes = [
             return import('./pages/Demo/Admin/Search');
         }),
     },
+    {
+        path: '/setting',
+        exact: true,
+        isPrivate: true,
+        layout: AppLayout,
+        component: lazy(async () => {
+            await initModules([featureModule], 'app');
+            return import('./pages/Demo/User/SettingAccount');
+        }),
+    },
+    {
+        path: '/user_readers/concerns',
+        exact: true,
+        isPrivate: true,
+        layout: AppLayout,
+        component: lazy(async () => {
+            await initModules([featureModule], 'app');
+            return import('./pages/Demo/User/Concerns');
+        }),
+    },
 ];

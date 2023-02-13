@@ -2,6 +2,7 @@ import { LockOutlined, SearchOutlined, SettingOutlined, UnlockOutlined } from '@
 import { Button, Col, Input, Row, Select, DatePicker, Space } from 'antd';
 import classNames from 'classnames/bind';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import AppButton from '~/components/AppButton';
 import AppDateInput from '~/components/AppDateInput';
 import AppForm from '~/components/AppForm';
@@ -128,12 +129,14 @@ function Search(props) {
                             </div>
                         </Col>
                         <Col span={8}>
-                            <div className="bottom-left" onClick={handleSubmitClick}>
-                                <AppButton type="search">
-                                    <SettingOutlined />
-                                    Chỉnh sửa
-                                </AppButton>
-                            </div>
+                            <Link to={'/setting'} style={{ display: 'block', width: '450px' }}>
+                                <div className="bottom-left" onClick={handleSubmitClick}>
+                                    <AppButton type="search">
+                                        <SettingOutlined />
+                                        Chỉnh sửa
+                                    </AppButton>
+                                </div>
+                            </Link>
                         </Col>
                     </Row>
                 </AppForm>

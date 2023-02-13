@@ -93,7 +93,7 @@ function SettingAccount(props) {
                             <div className="bottom-right" onClick={handleSubmitClick}>
                                 <AppButton type="search">
                                     <CheckOutlined />
-                                    Cập nhật thông tin
+                                    Lưu thay đổi
                                 </AppButton>
                             </div>
                         </Col>
