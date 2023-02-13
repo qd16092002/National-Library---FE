@@ -1,0 +1,22 @@
+
+@import '../GlobalStyles/_mixins'
+
+.input-wrapper
+    display: flex
+    flex-direction: column
+
+    label
+        @include small-heading
+        justify-content: flex-start
+        margin-bottom: 4px !important
+
+    .input
+        @include input-style
+        &::placeholder
+            font-size: 14px
+            font-weight: 400
+.required:after
+    content: " *"
+    color: red
+    margin-left: 3px
+
