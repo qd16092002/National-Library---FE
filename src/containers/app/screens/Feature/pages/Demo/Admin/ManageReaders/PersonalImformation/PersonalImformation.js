@@ -1,145 +1,191 @@
 import { FormOutlined, LockOutlined, SearchOutlined, SettingOutlined, UnlockOutlined } from '@ant-design/icons';
-import { Button, Col, Input, Row, Select, DatePicker, Space } from 'antd';
+import { Button, Col, Input, Row, Select, DatePicker, Space, Table } from 'antd';
 import classNames from 'classnames/bind';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CloseX } from '~/assets/svgs';
 import AppButton from '~/components/AppButton';
 import AppDateInput from '~/components/AppDateInput';
 import AppForm from '~/components/AppForm';
 import AppInput from '~/components/AppInput';
 import AppSelectInput from '~/components/AppSelectInput';
+import ModalConfirm from '~/components/Modal/ModalConfirm';
 import styles from './PersonalImformation.module.sass';
-const onChange = (value) => {
-    console.log(`selected ${value}`);
-};
-const onSearch = (value) => {
-    console.log('search:', value);
-};
-const { RangePicker } = DatePicker;
+import iconEdit from '~/assets/svgs/iconEdit.svg';
+import iconLock from '~/assets/svgs/iconLock.svg';
+import AppModal from '~/components/Modal/AppModal';
+
+// const onChange = (value) => {
+//     console.log(`selected ${value}`);
+// };
+// const onSearch = (value) => {
+//     console.log('search:', value);
+// };
+// const { RangePicker } = DatePicker;
 const cx = classNames.bind(styles);
 function Search(props) {
-    const onSubmit = (data) => {
-        console.log(data);
-    };
-    const handleSubmitClick = () => {};
+    const editDocumentBook = useRef(null);
+    const [searchedText, setSearchedText] = useState('');
+
     return (
         <div>
             <div className={cx('header')}>Thông tin cá nhân</div>
-            <AppForm onSubmit={onSubmit} className={cx('form')}>
-                <div className={cx('search')}>
-                    <Row>
-                        <Col
-                            span={8}
-                            style={{
-                                paddingBottom: 10,
-                            }}
-                        >
-                            <AppInput className="search" name="id" placeholder="Nhập mã độc giả muốn xem" />
-                        </Col>
-                        <Col span={1}></Col>
-                        <Col span={8}>
-                            <AppButton type="search">
-                                <SearchOutlined />
-                                Search
-                            </AppButton>
-                        </Col>
-                    </Row>
-                </div>
-            </AppForm>
 
             <div className={cx('imformation')}>
-                <AppForm onSubmit={onSubmit} className={cx('form')}>
-                    <Row gutter={[24, 12]}>
-                        <Col xs={24}>
-                            <Row className={cx('input-wrapper')}>
-                                <Col xs={8}>Họ và tên</Col>
-                                <Col xs={16}>
-                                    <div className={cx('input')}>
-                                        <AppInput name="name" placeholder="Họ và tên" />
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Col>
-                        <Col xs={24}>
-                            <Row className={cx('input-wrapper')}>
-                                <Col xs={8}>CCCD</Col>
-                                <Col xs={16}>
-                                    <div className={cx('input')}>
-                                        <AppInput name="cccd" placeholder="CCCD" />
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Col>
-                        <Col xs={24}>
-                            <Row className={cx('input-wrapper')}>
-                                <Col xs={8}>Email</Col>
-                                <Col xs={16}>
-                                    <div className={cx('input')}>
-                                        <AppInput name="email" placeholder="Email" />
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Col>
-                        <Col xs={24}>
-                            <Row className={cx('input-wrapper')}>
-                                <Col xs={8}>Ngày sinh</Col>
-                                <Col xs={16}>
-                                    <div className={cx('input')}>
-                                        <AppDateInput name="birthday" placeholder="Ngày sinh" />
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Col>
-                        <Col xs={24}>
-                            <Row className={cx('input-wrapper')}>
-                                <Col xs={8}>Giới tính</Col>
-                                <Col xs={16}>
-                                    <div className={cx('input')}>
-                                        <AppSelectInput name="gender" options={['Nam', 'Nữ', 'Khác']} />
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Col>
-                        <Col xs={24}>
-                            <Row className={cx('input-wrapper')}>
-                                <Col xs={8}>Số điện thoại</Col>
-                                <Col xs={16}>
-                                    <div className={cx('input')}>
-                                        <AppInput name="phonenumber" placeholder="Số điện thoại" />
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col span={8}>
-                            <div className="bottom-left" onClick={handleSubmitClick}>
-                                <AppButton type="search">
-                                    <LockOutlined />
-                                    Khóa tài khoản
-                                </AppButton>
-                            </div>
-                        </Col>
-                        <Col span={8}>
-                            <div className="bottom-left" onClick={handleSubmitClick}>
-                                <AppButton type="search">
-                                    <UnlockOutlined />
-                                    Mở tài khoản
-                                </AppButton>
-                            </div>
-                        </Col>
-                        <Col span={8}>
-                            <Link to={'/setting'} style={{ display: 'block', width: '450px' }}>
-                                <div className="bottom-left" onClick={handleSubmitClick}>
-                                    <AppButton type="search">
-                                        <FormOutlined />
-                                        Chỉnh sửa
-                                    </AppButton>
-                                </div>
-                            </Link>
-                        </Col>
-                    </Row>
-                </AppForm>
+                <Input.Search
+                    placeholder="Tìm kiếm"
+                    style={{
+                        marginBottom: 10,
+                    }}
+                    onSearch={(value) => {
+                        setSearchedText(value);
+                    }}
+                    onChange={(e) => {
+                        setSearchedText(e.target.value);
+                    }}
+                />
+                <Table
+                    className="table"
+                    columns={[
+                        {
+                            title: 'Họ và tên',
+                            dataIndex: 'name',
+                            key: 'name',
+                            filteredValue: [searchedText],
+                            onFilter: (value, record) => {
+                                return (
+                                    String(record.name).toLowerCase().includes(value.toLowerCase()) ||
+                                    String(record.cccd).toLowerCase().includes(value.toLowerCase()) ||
+                                    String(record.email).toLowerCase().includes(value.toLowerCase()) ||
+                                    String(record.birthday).toLowerCase().includes(value.toLowerCase()) ||
+                                    String(record.gender).toLowerCase().includes(value.toLowerCase()) ||
+                                    String(record.id).toLowerCase().includes(value.toLowerCase()) ||
+                                    String(record.phone).toLowerCase().includes(value.toLowerCase())
+                                );
+                            },
+                        },
+                        {
+                            title: 'CCCD',
+                            dataIndex: 'cccd',
+                            key: 'cccd',
+                        },
+                        {
+                            title: 'Email',
+                            dataIndex: 'email',
+                            key: 'email',
+                        },
+                        {
+                            title: 'Ngày sinh',
+                            dataIndex: 'birthday',
+                            key: 'birthday',
+                        },
+                        {
+                            title: 'Giới tính',
+                            dataIndex: 'gender',
+                            key: 'gender',
+                        },
+                        {
+                            title: 'Số điện thoại',
+                            dataIndex: 'phone',
+                            key: 'phone',
+                        },
+                        {
+                            title: 'Mã độc giả',
+                            dataIndex: 'id',
+                            key: 'id',
+                        },
+                        {
+                            title: 'Action',
+                            key: 'action',
+
+                            render: (_, record) => (
+                                <Space size="middle">
+                                    <ModalConfirm
+                                        // onConfirm={(e) => handleDeleteTitle(record?._id)}
+                                        triggerBtn={
+                                            <AppButton
+                                                style={{
+                                                    display: 'flex',
+                                                    justifyContent: 'space-evenly',
+                                                    alignItems: 'center',
+                                                    backgroundColor: '#F0F2FA',
+                                                    color: '#FF4D4F',
+                                                    borderRadius: '4px',
+                                                    padding: '5px 2px',
+                                                }}
+                                                // onClick={() => (currentDeleteTitleId.current = record?._id)}
+                                                // // isLoading={
+                                                // //     deleteTitle?.state === REQUEST_STATE.REQUEST &&
+                                                // //     currentDeleteTitleId.current === record?._id
+                                                // // }
+                                            >
+                                                <div>Khóa</div>
+                                                <img src={iconLock}></img>
+                                            </AppButton>
+                                        }
+                                    ></ModalConfirm>
+
+                                    <Link to="/setting">
+                                        <AppModal
+                                            width={762}
+                                            triggerBtn={
+                                                <AppButton
+                                                    style={{
+                                                        display: 'flex',
+                                                        justifyContent: 'space-evenly',
+                                                        alignItems: 'center',
+                                                        borderRadius: '4px',
+                                                        padding: '5px 2px',
+                                                    }}
+                                                >
+                                                    <div>Sửa</div>
+                                                    <img src={iconEdit}></img>
+                                                </AppButton>
+                                            }
+                                            contentStyle={{
+                                                paddingBottom: '10px',
+                                            }}
+                                            hasCloseAfterConfirm={false}
+                                        ></AppModal>
+                                    </Link>
+                                </Space>
+                                // ========
+                            ),
+                        },
+                    ]}
+                    dataSource={[
+                        {
+                            key: '1',
+                            name: 'Trần Quang Đạo',
+                            cccd: '123456789',
+                            email: 'tranquangdao16092002@gmail.com',
+                            birthday: '16/09/2002',
+                            gender: 'Nam',
+                            phone: '0824216169',
+                            id: '20200128',
+                        },
+                        {
+                            key: '2',
+                            name: 'Bùi Xuân Hải',
+                            cccd: '123456789',
+                            email: 'haibuixuan@gmail.com',
+                            birthday: '16/09/2002',
+                            gender: 'Nam',
+                            phone: '0824216169',
+                            id: '20194268',
+                        },
+                        {
+                            key: '3',
+                            name: 'Nguyễn Ngọc Quỳnh Anh',
+                            cccd: '123456789',
+                            email: 'nguyenngocquynhanh@gmail.com',
+                            birthday: '16/09/2002',
+                            gender: 'Nữ',
+                            phone: '0824216169',
+                            id: '20204613',
+                        },
+                    ]}
+                ></Table>
             </div>
         </div>
     );
