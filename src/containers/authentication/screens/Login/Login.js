@@ -1,4 +1,4 @@
-import { Col, notification, Row, Spin } from 'antd';
+import { Button, Col, Modal, notification, Row, Spin } from 'antd';
 import { REQUEST_STATE } from '~/app-configs';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,8 +16,33 @@ import classNames from 'classnames/bind';
 import IconEye from '~/assets/svgs/IconEye.svg';
 import iconEyeClosed from '~/assets/svgs/IconEyeClosed.svg';
 import { EyeClose, EyeShow } from '~/assets/svgs';
+import AppForm from '~/components/AppForm';
+import AppInput from '~/components/AppInput';
+import AppDateInput from '~/components/AppDateInput';
+import AppSelectInput from '~/components/AppSelectInput';
 const cx = classNames.bind(styles);
+
 const Login = () => {
+    const [open, setOpen] = useState(false);
+    const [confirmLoading, setConfirmLoading] = useState(false);
+    const [modalText, setModalText] = useState('Content of the modal');
+    const showModal = () => {
+        setOpen(true);
+    };
+    const handleOk = () => {
+        setModalText('The modal will be closed after two seconds');
+        setConfirmLoading(true);
+        setTimeout(() => {
+            setOpen(false);
+            setConfirmLoading(false);
+        }, 2000);
+    };
+
+    const handleCancel = () => {
+        console.log('Clicked cancel button');
+        setOpen(false);
+    };
+
     const [eyeShow, setEyeShow] = useState(false);
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
@@ -145,9 +170,85 @@ const Login = () => {
                         <button className="auth__box is-flex al-center ju-center">
                             {user?.authState === REQUEST_STATE.REQUEST ? <Spin /> : 'Đăng nhập'}
                         </button>
-                        <button className="auth__box is-flex al-center ju-center">
-                            {user?.authState === REQUEST_STATE.REQUEST ? <Spin /> : 'Đăng ký'}
-                        </button>
+                        <Button className="auth__box is-flex al-center ju-center" type="primary" onClick={showModal}>
+                            Đăng ký
+                        </Button>
+                        <Modal
+                            title="Đăng ký"
+                            visible={open}
+                            onOk={handleOk}
+                            confirmLoading={confirmLoading}
+                            onCancel={handleCancel}
+                            okText="Đăng ký"
+                            cancelText="Hủy"
+                        >
+                            <div className={cx('imformation')}>
+                                <AppForm onSubmit={onSubmit} className={cx('form')}>
+                                    <Row gutter={[24, 12]}>
+                                        <Col xs={24}>
+                                            <Row className={cx('input-wrapper')}>
+                                                <Col xs={8}>Họ và tên</Col>
+                                                <Col xs={16}>
+                                                    <div className={cx('input')}>
+                                                        <AppInput name="name" placeholder="Họ và tên" />
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                        </Col>
+                                        <Col xs={24}>
+                                            <Row className={cx('input-wrapper')}>
+                                                <Col xs={8}>CCCD</Col>
+                                                <Col xs={16}>
+                                                    <div className={cx('input')}>
+                                                        <AppInput name="cccd" placeholder="CCCD" />
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                        </Col>
+                                        <Col xs={24}>
+                                            <Row className={cx('input-wrapper')}>
+                                                <Col xs={8}>Email</Col>
+                                                <Col xs={16}>
+                                                    <div className={cx('input')}>
+                                                        <AppInput name="email" placeholder="Nhập Email" />
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                        </Col>
+                                        <Col xs={24}>
+                                            <Row className={cx('input-wrapper')}>
+                                                <Col xs={8}>Ngày sinh</Col>
+                                                <Col xs={16}>
+                                                    <div className={cx('input')}>
+                                                        <AppDateInput name="birthday" placeholder="Ngày sinh" />
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                        </Col>
+                                        <Col xs={24}>
+                                            <Row className={cx('input-wrapper')}>
+                                                <Col xs={8}>Giới tính</Col>
+                                                <Col xs={16}>
+                                                    <div className={cx('input')}>
+                                                        <AppSelectInput name="gender" options={['Nam', 'Nữ', 'Khác']} />
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                        </Col>
+                                        <Col xs={24}>
+                                            <Row className={cx('input-wrapper')}>
+                                                <Col xs={8}>Số điện thoại</Col>
+                                                <Col xs={16}>
+                                                    <div className={cx('input')}>
+                                                        <AppInput name="phonenumber" placeholder="Nhập Số điện thoại" />
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                        </Col>
+                                    </Row>
+                                </AppForm>
+                            </div>
+                        </Modal>
                     </div>
                 </form>
             </div>

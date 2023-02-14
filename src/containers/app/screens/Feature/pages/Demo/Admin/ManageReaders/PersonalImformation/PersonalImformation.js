@@ -127,7 +127,7 @@ function Search(props) {
 
                                     <Link to="/setting">
                                         <AppModal
-                                            width={762}
+                                            width={702}
                                             triggerBtn={
                                                 <AppButton
                                                     style={{
@@ -149,7 +149,6 @@ function Search(props) {
                                         ></AppModal>
                                     </Link>
                                 </Space>
-                                // ========
                             ),
                         },
                     ]}
@@ -176,6 +175,96 @@ function Search(props) {
                         },
                         {
                             key: '3',
+                            name: 'Nguyễn Ngọc Quỳnh Anh',
+                            cccd: '123456789',
+                            email: 'nguyenngocquynhanh@gmail.com',
+                            birthday: '16/09/2002',
+                            gender: 'Nữ',
+                            phone: '0824216169',
+                            id: '20204613',
+                        },
+                        {
+                            key: '4',
+                            name: 'Trần Quang Đạo',
+                            cccd: '123456789',
+                            email: 'tranquangdao16092002@gmail.com',
+                            birthday: '16/09/2002',
+                            gender: 'Nam',
+                            phone: '0824216169',
+                            id: '20200128',
+                        },
+                        {
+                            key: '5',
+                            name: 'Bùi Xuân Hải',
+                            cccd: '123456789',
+                            email: 'haibuixuan@gmail.com',
+                            birthday: '16/09/2002',
+                            gender: 'Nam',
+                            phone: '0824216169',
+                            id: '20194268',
+                        },
+                        {
+                            key: '6',
+                            name: 'Nguyễn Ngọc Quỳnh Anh',
+                            cccd: '123456789',
+                            email: 'nguyenngocquynhanh@gmail.com',
+                            birthday: '16/09/2002',
+                            gender: 'Nữ',
+                            phone: '0824216169',
+                            id: '20204613',
+                        },
+                        {
+                            key: '7',
+                            name: 'Trần Quang Đạo',
+                            cccd: '123456789',
+                            email: 'tranquangdao16092002@gmail.com',
+                            birthday: '16/09/2002',
+                            gender: 'Nam',
+                            phone: '0824216169',
+                            id: '20200128',
+                        },
+                        {
+                            key: '8',
+                            name: 'Bùi Xuân Hải',
+                            cccd: '123456789',
+                            email: 'haibuixuan@gmail.com',
+                            birthday: '16/09/2002',
+                            gender: 'Nam',
+                            phone: '0824216169',
+                            id: '20194268',
+                        },
+                        {
+                            key: '9',
+                            name: 'Nguyễn Ngọc Quỳnh Anh',
+                            cccd: '123456789',
+                            email: 'nguyenngocquynhanh@gmail.com',
+                            birthday: '16/09/2002',
+                            gender: 'Nữ',
+                            phone: '0824216169',
+                            id: '20204613',
+                        },
+                        {
+                            key: '10',
+                            name: 'Trần Quang Đạo',
+                            cccd: '123456789',
+                            email: 'tranquangdao16092002@gmail.com',
+                            birthday: '16/09/2002',
+                            gender: 'Nam',
+                            phone: '0824216169',
+                            id: '20200128',
+                        },
+                        {
+                            key: '11',
+                            name: 'Bùi Xuân Hải',
+                            cccd: '123456789',
+                            email: 'haibuixuan@gmail.com',
+                            birthday: '16/09/2002',
+                            gender: 'Nam',
+                            phone: '0824216169',
+                            id: '20194268',
+                        },
+                        {
+                            key: '12',
                             name: 'Nguyễn Ngọc Quỳnh Anh',
                             cccd: '123456789',
                             email: 'nguyenngocquynhanh@gmail.com',
