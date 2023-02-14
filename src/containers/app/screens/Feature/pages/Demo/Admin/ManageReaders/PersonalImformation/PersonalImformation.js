@@ -15,15 +15,8 @@ import iconEdit from '~/assets/svgs/iconEdit.svg';
 import iconLock from '~/assets/svgs/iconLock.svg';
 import AppModal from '~/components/Modal/AppModal';
 
-// const onChange = (value) => {
-//     console.log(`selected ${value}`);
-// };
-// const onSearch = (value) => {
-//     console.log('search:', value);
-// };
-// const { RangePicker } = DatePicker;
 const cx = classNames.bind(styles);
-function Search(props) {
+function PersonalImformation(props) {
     const editDocumentBook = useRef(null);
     const [searchedText, setSearchedText] = useState('');
 
@@ -168,7 +161,7 @@ function Search(props) {
                             name: 'Bùi Xuân Hải',
                             cccd: '123456789',
                             email: 'haibuixuan@gmail.com',
-                            birthday: '16/09/2002',
+                            birthday: '1/10/2002',
                             gender: 'Nam',
                             phone: '0824216169',
                             id: '20194268',
@@ -280,4 +273,4 @@ function Search(props) {
     );
 }
 
-export default Search;
+export default PersonalImformation;
