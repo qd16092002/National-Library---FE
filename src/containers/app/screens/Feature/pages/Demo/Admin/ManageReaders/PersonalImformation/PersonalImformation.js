@@ -5,19 +5,17 @@ import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CloseX } from '~/assets/svgs';
 import AppButton from '~/components/AppButton';
-import AppDateInput from '~/components/AppDateInput';
-import AppForm from '~/components/AppForm';
-import AppInput from '~/components/AppInput';
-import AppSelectInput from '~/components/AppSelectInput';
+
 import ModalConfirm from '~/components/Modal/ModalConfirm';
 import styles from './PersonalImformation.module.sass';
 import iconEdit from '~/assets/svgs/iconEdit.svg';
 import iconLock from '~/assets/svgs/iconLock.svg';
 import AppModal from '~/components/Modal/AppModal';
+import EditAccount from '~/components/EditAccount';
 
 const cx = classNames.bind(styles);
 function PersonalImformation(props) {
-    const editDocumentBook = useRef(null);
+    const EditAccountPersonal = useRef(null);
     const [searchedText, setSearchedText] = useState('');
 
     return (
@@ -112,35 +110,44 @@ function PersonalImformation(props) {
                                                 // //     currentDeleteTitleId.current === record?._id
                                                 // // }
                                             >
-                                                <div>Khóa</div>
                                                 <img src={iconLock}></img>
+                                                <div>Khóa</div>
                                             </AppButton>
                                         }
                                     ></ModalConfirm>
 
-                                    <Link to="/setting">
-                                        <AppModal
-                                            width={702}
-                                            triggerBtn={
-                                                <AppButton
-                                                    style={{
-                                                        display: 'flex',
-                                                        justifyContent: 'space-evenly',
-                                                        alignItems: 'center',
-                                                        borderRadius: '4px',
-                                                        padding: '5px 2px',
-                                                    }}
-                                                >
-                                                    <div>Sửa</div>
-                                                    <img src={iconEdit}></img>
-                                                </AppButton>
+                                    <AppModal
+                                        width={702}
+                                        close={<CloseX />}
+                                        closeRef={EditAccountPersonal}
+                                        triggerBtn={
+                                            <AppButton
+                                                style={{
+                                                    display: 'flex',
+                                                    justifyContent: 'space-evenly',
+                                                    alignItems: 'center',
+                                                    borderRadius: '4px',
+                                                    padding: '5px 2px',
+                                                }}
+                                            >
+                                                <img src={iconEdit}></img>
+                                                <div>Sửa</div>
+                                            </AppButton>
+                                        }
+                                        contentStyle={{
+                                            paddingBottom: '10px',
+                                        }}
+                                        hasCloseAfterConfirm={false}
+                                    >
+                                        <EditAccount
+                                            title={record}
+                                            onClose={() =>
+                                                setTimeout(() => {
+                                                    EditAccountPersonal.current.click();
+                                                }, 100)
                                             }
-                                            contentStyle={{
-                                                paddingBottom: '10px',
-                                            }}
-                                            hasCloseAfterConfirm={false}
-                                        ></AppModal>
-                                    </Link>
+                                        />
+                                    </AppModal>
                                 </Space>
                             ),
                         },

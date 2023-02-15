@@ -17,7 +17,7 @@ import AppModal from '~/components/Modal/AppModal';
 
 const cx = classNames.bind(styles);
 function Search(props) {
-    const editDocumentBook = useRef(null);
+    const EditAccountBook = useRef(null);
     const [searchedText, setSearchedText] = useState('');
 
     return (

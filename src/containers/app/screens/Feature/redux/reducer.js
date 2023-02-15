@@ -1,5 +1,12 @@
 import { combineReducers } from 'redux';
-import { SEARCH_USER_BY_KEYWORD } from './action';
+import { REQUEST_STATE } from '~/app-configs';
+import {
+    EDIT_DOCUMENT_BOOK,
+    EDIT_DOCUMENT_BOOK_FAIL,
+    EDIT_DOCUMENT_BOOK_SUCCESS,
+    RESET_EDIT_DOCUMENT_BOOK,
+    SEARCH_USER_BY_KEYWORD,
+} from '~/containers/app/screens/Feature/redux/action';
 
 const defaultState = {
     state: null,
@@ -23,6 +30,38 @@ export default combineReducers({
                     filterData: filterData,
                 };
             }
+            default:
+                return state;
+        }
+    },
+    editAccount: (state = defaultState, action) => {
+        switch (action.type) {
+            case EDIT_DOCUMENT_BOOK().type: {
+                return {
+                    ...state,
+                    state: REQUEST_STATE.REQUEST,
+                };
+            }
+            case EDIT_DOCUMENT_BOOK_SUCCESS().type: {
+                const { data } = action.payload;
+                return {
+                    ...state,
+                    data: data,
+                    state: REQUEST_STATE.SUCCESS,
+                };
+            }
+            case EDIT_DOCUMENT_BOOK_FAIL().type: {
+                return {
+                    ...state,
+                    state: REQUEST_STATE.ERROR,
+                };
+            }
+            case RESET_EDIT_DOCUMENT_BOOK().type: {
+                return {
+                    ...defaultState,
+                };
+            }
+
             default:
                 return state;
         }

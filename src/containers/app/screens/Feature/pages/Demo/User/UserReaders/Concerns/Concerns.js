@@ -24,27 +24,6 @@ function Concerns(props) {
     return (
         <div>
             <div className={cx('header')}>Mối quan tâm của bạn là gì ?</div>
-            {/* <AppForm onSubmit={onSubmit} className={cx('form')}>
-                <div className={cx('search')}>
-                    <Row>
-                        <Col
-                            span={8}
-                            style={{
-                                paddingBottom: 10,
-                            }}
-                        >
-                            <AppInput className="search" name="id" placeholder="Nhập mã độc giả muốn xem" />
-                        </Col>
-                        <Col span={1}></Col>
-                        <Col span={8}>
-                            <AppButton type="search">
-                                <SearchOutlined />
-                                Search
-                            </AppButton>
-                        </Col>
-                    </Row>
-                </div>
-            </AppForm> */}
 
             <div className={cx('imformation')}>
                 <AppForm onSubmit={onSubmit} className={cx('form')}>
