@@ -74,7 +74,7 @@ function AppLayout({ children, match }) {
             <div
                 style={{
                     backgroundColor: '#001529',
-                    height: '100vh',
+                    height: '250vh',
                     width: '250px',
                     position: 'relative',
                     display: 'flex',

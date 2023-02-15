@@ -175,8 +175,8 @@ const Login = () => {
                             onOk={handleOk}
                             confirmLoading={confirmLoading}
                             onCancel={handleCancel}
-                            okText="Đăng ký"
-                            cancelText="Hủy"
+                            // okText="Đăng ký"
+                            // cancelText="Hủy"
                         >
                             <div className={cx('imformation')}>
                                 <AppForm onSubmit={onSubmit} className={cx('form')}>
@@ -207,6 +207,28 @@ const Login = () => {
                                                 <Col xs={16}>
                                                     <div className={cx('input')}>
                                                         <AppInput name="email" placeholder="Nhập Email" />
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                        </Col>
+                                        <Col xs={24}>
+                                            <Row className={cx('input-wrapper')}>
+                                                <Col xs={8}>Mật khẩu</Col>
+                                                <Col xs={16}>
+                                                    <div className={cx('input')}>
+                                                        <AppInput
+                                                            {...register('password', { required: true })}
+                                                            type={eyeShow === true ? 'text' : 'password'}
+                                                            placeholder="Mật khẩu"
+                                                            autoComplete="false"
+                                                            name="password"
+                                                        />
+                                                        <div
+                                                            className={cx('eye-icon')}
+                                                            onClick={() => setEyeShow(!eyeShow)}
+                                                        >
+                                                            {eyeShow ? <EyeClose /> : <EyeShow />}
+                                                        </div>
                                                     </div>
                                                 </Col>
                                             </Row>

@@ -55,6 +55,7 @@ export default function (props) {
                         userSelect: 'none',
                     }}
                 >
+                    {/* {user === 'user' ? 'usser' : 'manager'} */}
                     Manager
                 </span>
             </div>

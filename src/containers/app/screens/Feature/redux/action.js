@@ -28,3 +28,10 @@ export function EDIT_DOCUMENT_BOOK_FAIL(payload) {
         payload,
     };
 }
+//
+export function DELETE_TITLE(payload) {
+    return {
+        type: 'DELETE_TITLE',
+        payload,
+    };
+}

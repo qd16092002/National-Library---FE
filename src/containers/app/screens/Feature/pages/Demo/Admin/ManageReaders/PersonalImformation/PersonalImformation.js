@@ -5,19 +5,34 @@ import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CloseX } from '~/assets/svgs';
 import AppButton from '~/components/AppButton';
-
 import ModalConfirm from '~/components/Modal/ModalConfirm';
 import styles from './PersonalImformation.module.sass';
 import iconEdit from '~/assets/svgs/iconEdit.svg';
 import iconLock from '~/assets/svgs/iconLock.svg';
 import AppModal from '~/components/Modal/AppModal';
 import EditAccount from '~/components/EditAccount';
-
+import { REQUEST_STATE } from '~/app-configs';
 const cx = classNames.bind(styles);
 function PersonalImformation(props) {
     const EditAccountPersonal = useRef(null);
     const [searchedText, setSearchedText] = useState('');
+    const [eyeShow, setEyeShow] = useState(false);
+    let currentDeleteTitleId = useRef();
+    function handleDeleteTitle(titleId) {
+        dispatch(DELETE_TITLE({ titleId }));
+    }
+    const [modalText, setModalText] = useState('Content of the modal');
+    const [confirmLoading, setConfirmLoading] = useState(false);
+    const [open, setOpen] = useState(false);
 
+    const handleOk = () => {
+        setModalText('The modal will be closed after two seconds');
+        setConfirmLoading(true);
+        setTimeout(() => {
+            setOpen(false);
+            setConfirmLoading(false);
+        }, 2000);
+    };
     return (
         <div>
             <div className={cx('header')}>Thông tin cá nhân</div>
@@ -91,31 +106,97 @@ function PersonalImformation(props) {
 
                             render: (_, record) => (
                                 <Space size="middle">
-                                    <ModalConfirm
+                                    {/* <ModalConfirm
                                         // onConfirm={(e) => handleDeleteTitle(record?._id)}
                                         triggerBtn={
-                                            <AppButton
-                                                style={{
-                                                    display: 'flex',
-                                                    justifyContent: 'space-evenly',
-                                                    alignItems: 'center',
-                                                    backgroundColor: '#F0F2FA',
-                                                    color: '#FF4D4F',
-                                                    borderRadius: '4px',
-                                                    padding: '5px 2px',
-                                                }}
-                                                // onClick={() => (currentDeleteTitleId.current = record?._id)}
-                                                // // isLoading={
-                                                // //     deleteTitle?.state === REQUEST_STATE.REQUEST &&
-                                                // //     currentDeleteTitleId.current === record?._id
-                                                // // }
-                                            >
-                                                <img src={iconLock}></img>
-                                                <div>Khóa</div>
-                                            </AppButton>
+                                            <div className={cx('eye-icon')} onClick={() => setEyeShow(!eyeShow)}>
+                                                {eyeShow ? (
+                                                    <AppButton
+                                                        style={{
+                                                            display: 'flex',
+                                                            justifyContent: 'space-evenly',
+                                                            alignItems: 'center',
+                                                            backgroundColor: '#F0F2FA',
+                                                            color: '#FF4D4F',
+                                                            borderRadius: '4px',
+                                                            padding: '5px 2px',
+                                                        }}
+                                                        onClick={() => (currentDeleteTitleId.current = record?._id)}
+                                                        isLoading={
+                                                            deleteTitle?.state === REQUEST_STATE.REQUEST &&
+                                                            currentDeleteTitleId.current === record?._id
+                                                        }
+                                                    >
+                                                        <LockOutlined />
+                                                        <div>Khóa</div>
+                                                    </AppButton>
+                                                ) : (
+                                                    <AppButton
+                                                        style={{
+                                                            display: 'flex',
+                                                            justifyContent: 'space-evenly',
+                                                            alignItems: 'center',
+                                                            backgroundColor: '#F0F2FA',
+                                                            color: '#FF4D4F',
+                                                            borderRadius: '4px',
+                                                            padding: '5px 2px',
+                                                        }}
+                                                        onClick={() => (currentDeleteTitleId.current = record?._id)}
+                                                        isLoading={
+                                                            deleteTitle?.state === REQUEST_STATE.REQUEST &&
+                                                            currentDeleteTitleId.current === record?._id
+                                                        }
+                                                    >
+                                                        <UnlockOutlined />
+                                                        <div>Mở Khóa</div>
+                                                    </AppButton>
+                                                )}
+                                            </div>
+                                        }
+                                    ></ModalConfirm> */}
+                                    <ModalConfirm
+                                        confirmText="Xác nhận"
+                                        cancelText="Hủy Bỏ"
+                                        onOk={handleOk}
+                                        confirmLoading={confirmLoading}
+                                        triggerBtn={
+                                            <div onClick={() => setEyeShow(!eyeShow)}>
+                                                {eyeShow ? (
+                                                    <AppButton
+                                                        style={{
+                                                            display: 'flex',
+                                                            justifyContent: 'space-evenly',
+                                                            alignItems: 'center',
+                                                            backgroundColor: '#F0F2FA',
+                                                            color: '#FF4D4F',
+                                                            borderRadius: '4px',
+                                                            padding: '5px 2px',
+                                                        }}
+                                                        onClick={() => (currentDeleteTitleId.current = record?._id)}
+                                                    >
+                                                        <LockOutlined />
+                                                        <div>Khóa</div>
+                                                    </AppButton>
+                                                ) : (
+                                                    <AppButton
+                                                        style={{
+                                                            display: 'flex',
+                                                            justifyContent: 'space-evenly',
+                                                            alignItems: 'center',
+                                                            backgroundColor: '#F0F2FA',
+                                                            color: '#FF4D4F',
+                                                            borderRadius: '4px',
+                                                            padding: '5px 2px',
+                                                        }}
+                                                        onClick={() => (currentDeleteTitleId.current = record?._id)}
+                                                    >
+                                                        <UnlockOutlined />
+                                                        <div>Mở Khóa</div>
+                                                    </AppButton>
+                                                )}
+                                            </div>
                                         }
                                     ></ModalConfirm>
-
                                     <AppModal
                                         width={702}
                                         close={<CloseX />}
