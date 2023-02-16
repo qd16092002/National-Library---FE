@@ -60,6 +60,26 @@ export const childRoutes = [
         }),
     },
     {
+        path: '/manage_book/add_book',
+        exact: true,
+        isPrivate: true,
+        layout: AppLayout,
+        component: lazy(async () => {
+            await initModules([featureModule], 'app');
+            return import('./pages/Demo/Admin/ManageBook/AddBook');
+        }),
+    },
+    {
+        path: '/manage_book/search_book',
+        exact: true,
+        isPrivate: true,
+        layout: AppLayout,
+        component: lazy(async () => {
+            await initModules([featureModule], 'app');
+            return import('./pages/Demo/Admin/ManageBook/SearchBook');
+        }),
+    },
+    {
         path: '/user_card/review_card',
         exact: true,
         isPrivate: true,

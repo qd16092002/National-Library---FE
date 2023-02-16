@@ -8,6 +8,7 @@ import {
     CarryOutOutlined,
     EyeOutlined,
     FileSearchOutlined,
+    FileAddOutlined,
 } from '@ant-design/icons';
 import { Image, Layout, Menu } from 'antd';
 import 'antd/dist/antd.css';
@@ -37,8 +38,11 @@ const sliderItems = [
         getNavItem('Xem thông tin cá nhân', '/manage_readers/view_personal', <EyeOutlined />),
         getNavItem('Tìm kiếm độc giả', '/manage_readers/search_personal', <FileSearchOutlined />),
     ]),
-    getNavItem('Quản lý sách', '/config/qlsach', <BookOutlined />, null),
-    getNavItem('Quản lý thẻ', '/config/qlthe', <IdcardOutlined />, [
+    getNavItem('Quản lý sách', '/manage_book', <BookOutlined />, [
+        getNavItem('Thêm Sách', '/manage_book/add_book', <FileAddOutlined />),
+        getNavItem('Tìm kiếm sách', '/manage_book/search_book', <FileSearchOutlined />),
+    ]),
+    getNavItem('Quản lý thẻ', '/manage_card', <IdcardOutlined />, [
         getNavItem('Xem tình trạng thẻ', '/user_card/review_card', <EyeOutlined />),
         getNavItem('Xem danh sách thẻ', '/manage_card/show_card_list', <EyeOutlined />),
         getNavItem('Đăng ký thẻ mới', '/user_card/regist_card', <UserOutlined />),
