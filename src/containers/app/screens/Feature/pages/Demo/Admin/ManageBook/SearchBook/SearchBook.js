@@ -12,14 +12,30 @@ import AppSelectInput from '~/components/AppSelectInput';
 import ModalConfirm from '~/components/Modal/ModalConfirm';
 import styles from './SearchBook.module.sass';
 import iconEdit from '~/assets/svgs/iconEdit.svg';
-import iconLock from '~/assets/svgs/iconLock.svg';
 import AppModal from '~/components/Modal/AppModal';
+import EditBook from '~/components/EditBook';
 
 const cx = classNames.bind(styles);
 function SearchBook(props) {
-    const EditAccountBook = useRef(null);
+    const EditBookk = useRef(null);
     const [searchedText, setSearchedText] = useState('');
 
+    let currentDeleteTitleId = useRef();
+    function handleDeleteTitle(titleId) {
+        dispatch(DELETE_TITLE({ titleId }));
+    }
+    const [modalText, setModalText] = useState('Content of the modal');
+    const [confirmLoading, setConfirmLoading] = useState(false);
+    const [open, setOpen] = useState(false);
+
+    const handleOk = () => {
+        setModalText('The modal will be closed after two seconds');
+        setConfirmLoading(true);
+        setTimeout(() => {
+            setOpen(false);
+            setConfirmLoading(false);
+        }, 2000);
+    };
     return (
         <div>
             <div className={cx('header')}>Tìm kiếm sách</div>
@@ -87,6 +103,52 @@ function SearchBook(props) {
                             dataIndex: 'date_added',
                             key: 'date_added',
                         },
+                        {
+                            title: 'Số lượng',
+                            dataIndex: 'quantity',
+                            key: 'quantity',
+                        },
+                        {
+                            title: 'Chỉnh sửa thông tin ',
+                            key: 'action',
+
+                            render: (_, record) => (
+                                <Space size="middle">
+                                    <AppModal
+                                        width={702}
+                                        close={<CloseX />}
+                                        closeRef={EditBookk}
+                                        triggerBtn={
+                                            <AppButton
+                                                style={{
+                                                    display: 'flex',
+                                                    justifyContent: 'space-evenly',
+                                                    alignItems: 'center',
+                                                    borderRadius: '4px',
+                                                    padding: '5px 2px',
+                                                }}
+                                            >
+                                                <img src={iconEdit}></img>
+                                                <div>Sửa</div>
+                                            </AppButton>
+                                        }
+                                        contentStyle={{
+                                            paddingBottom: '10px',
+                                        }}
+                                        hasCloseAfterConfirm={false}
+                                    >
+                                        <EditBook
+                                            title={record}
+                                            onClose={() =>
+                                                setTimeout(() => {
+                                                    EditBookk.current.click();
+                                                }, 100)
+                                            }
+                                        />
+                                    </AppModal>
+                                </Space>
+                            ),
+                        },
                     ]}
                     dataSource={[
                         {
@@ -98,6 +160,7 @@ function SearchBook(props) {
                             category: 'Sách Lập trình',
                             book_id: 'IT3180',
                             date_added: '1/1/2020',
+                            quantity: '100',
                         },
                         {
                             key: '2',
@@ -108,6 +171,7 @@ function SearchBook(props) {
                             category: 'Sách Lập trình',
                             book_id: 'IT3090',
                             date_added: '1/1/2020',
+                            quantity: '100',
                         },
                         {
                             key: '3',
@@ -118,6 +182,7 @@ function SearchBook(props) {
                             category: 'Sách Lập trình',
                             book_id: 'IT3080',
                             date_added: '1/1/2020',
+                            quantity: '100',
                         },
                         {
                             key: '4',
@@ -128,6 +193,7 @@ function SearchBook(props) {
                             category: 'Sách Lập trình',
                             book_id: 'IT3170',
                             date_added: '1/1/2020',
+                            quantity: '100',
                         },
                         {
                             key: '5',
@@ -138,6 +204,7 @@ function SearchBook(props) {
                             category: 'Sách Lập trình',
                             book_id: 'IT3160',
                             date_added: '1/1/2020',
+                            quantity: '100',
                         },
                         {
                             key: '6',
@@ -148,6 +215,7 @@ function SearchBook(props) {
                             category: 'Sách đời sống',
                             book_id: 'EM1010',
                             date_added: '1/1/2020',
+                            quantity: '100',
                         },
                     ]}
                 ></Table>

@@ -106,54 +106,6 @@ function PersonalImformation(props) {
 
                             render: (_, record) => (
                                 <Space size="middle">
-                                    {/* <ModalConfirm
-                                        // onConfirm={(e) => handleDeleteTitle(record?._id)}
-                                        triggerBtn={
-                                            <div className={cx('eye-icon')} onClick={() => setEyeShow(!eyeShow)}>
-                                                {eyeShow ? (
-                                                    <AppButton
-                                                        style={{
-                                                            display: 'flex',
-                                                            justifyContent: 'space-evenly',
-                                                            alignItems: 'center',
-                                                            backgroundColor: '#F0F2FA',
-                                                            color: '#FF4D4F',
-                                                            borderRadius: '4px',
-                                                            padding: '5px 2px',
-                                                        }}
-                                                        onClick={() => (currentDeleteTitleId.current = record?._id)}
-                                                        isLoading={
-                                                            deleteTitle?.state === REQUEST_STATE.REQUEST &&
-                                                            currentDeleteTitleId.current === record?._id
-                                                        }
-                                                    >
-                                                        <LockOutlined />
-                                                        <div>Khóa</div>
-                                                    </AppButton>
-                                                ) : (
-                                                    <AppButton
-                                                        style={{
-                                                            display: 'flex',
-                                                            justifyContent: 'space-evenly',
-                                                            alignItems: 'center',
-                                                            backgroundColor: '#F0F2FA',
-                                                            color: '#FF4D4F',
-                                                            borderRadius: '4px',
-                                                            padding: '5px 2px',
-                                                        }}
-                                                        onClick={() => (currentDeleteTitleId.current = record?._id)}
-                                                        isLoading={
-                                                            deleteTitle?.state === REQUEST_STATE.REQUEST &&
-                                                            currentDeleteTitleId.current === record?._id
-                                                        }
-                                                    >
-                                                        <UnlockOutlined />
-                                                        <div>Mở Khóa</div>
-                                                    </AppButton>
-                                                )}
-                                            </div>
-                                        }
-                                    ></ModalConfirm> */}
                                     <ModalConfirm
                                         confirmText="Xác nhận"
                                         cancelText="Hủy Bỏ"
