@@ -38,7 +38,11 @@ const sliderItems = [
         getNavItem('Tìm kiếm độc giả', '/manage_readers/search_personal', <FileSearchOutlined />),
     ]),
     getNavItem('Quản lý sách', '/config/qlsach', <BookOutlined />, null),
-    getNavItem('Quản lý thẻ', '/config/qlthe', <IdcardOutlined />, null),
+    getNavItem('Quản lý thẻ', '/config/qlthe', <IdcardOutlined />, [
+        getNavItem('Xem tình trạng thẻ', '/user_card/review_card', <EyeOutlined />),
+        getNavItem('Xem danh sách thẻ', '/manage_card/show_card_list', <EyeOutlined />),
+        getNavItem('Đăng ký thẻ mới', '/user_card/regist_card', <UserOutlined />),
+    ]),
     getNavItem('Quản lý mượn trả', '/config/qlmuon', <RetweetOutlined />, null),
     getNavItem('Quản lý sự kiện', '/config/qlsk', <CarryOutOutlined />, null),
 ];
