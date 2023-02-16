@@ -51,6 +51,16 @@ export const childRoutes = [
         }),
     },
     {
+        path: '/user_books/search_book',
+        exact: true,
+        isPrivate: true,
+        layout: AppLayout,
+        component: lazy(async () => {
+            await initModules([featureModule], 'app');
+            return import('./pages/Demo/User/UserBook/SearchBook');
+        }),
+    },
+    {
         path: '/manage_books/modify_book',
         exact: true,
         isPrivate: true,
@@ -58,6 +68,16 @@ export const childRoutes = [
         component: lazy(async () => {
             await initModules([featureModule], 'app');
             return import('./pages/Demo/Admin/ManageBooks/Modify_Book/BookImformation');
+        }),
+    },
+    {
+        path: '/user_books/borrowing_book',
+        exact: true,
+        isPrivate: true,
+        layout: AppLayout,
+        component: lazy(async () => {
+            await initModules([featureModule], 'app');
+            return import('./pages/Demo/User/UserBook/CheckBook');
         }),
     },
     {

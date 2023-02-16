@@ -40,6 +40,8 @@ const sliderItems = [
     getNavItem('Quản lý sách', '/config/qlsach', <BookOutlined />, [
         getNavItem('Thêm sách', '/manage_books/update_book'),
         getNavItem('Sửa/Xóa/Tìm kiếm sách', '/manage_books/modify_book'),
+        getNavItem('Tìm kiếm sách', '/user_books/search_book'),
+        getNavItem('Kiểm tra sách đang mượn', '/user_books/borrowing_book'),
     ]),
     getNavItem('Quản lý thẻ', '/config/qlthe', <IdcardOutlined />, [
         getNavItem('Xem tình trạng thẻ', '/user_card/review_card', <EyeOutlined />),
