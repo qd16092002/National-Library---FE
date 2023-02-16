@@ -59,4 +59,34 @@ export const childRoutes = [
             return import('./pages/Demo/User/UserReaders/Concerns');
         }),
     },
+    {
+        path: '/user_card/review_card',
+        exact: true,
+        isPrivate: true,
+        layout: AppLayout,
+        component: lazy(async () => {
+            await initModules([featureModule], 'app');
+            return import('./pages/Demo/User/UserCard/ShowCardInfor');
+        }),
+    },
+    {
+        path: '/manage_card/show_card_list',
+        exact: true,
+        isPrivate: true,
+        layout: AppLayout,
+        component: lazy(async () => {
+            await initModules([featureModule], 'app');
+            return import('./pages/Demo/Admin/ManageCard/ShowCardList');
+        }),
+    },
+    {
+        path: '/user_card/regist_card',
+        exact: true,
+        isPrivate: true,
+        layout: AppLayout,
+        component: lazy(async () => {
+            await initModules([featureModule], 'app');
+            return import('./pages/Demo/User/UserCard/RegistCard');
+        }),
+    },
 ];

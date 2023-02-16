@@ -2,7 +2,7 @@
     "name": "national_library",
     "version": "1.0.0",
     "scripts": {
-        "start": "set PORT=3501 & react-app-rewired start",
+        "start": "set PORT=3501 & react-app-rewired --openssl-legacy-provider start",
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
         "eject": "react-app-rewired eject",
