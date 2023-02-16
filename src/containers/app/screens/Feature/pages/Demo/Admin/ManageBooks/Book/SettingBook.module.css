@@ -1,0 +1,48 @@
+.header {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+
+.information {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    padding-left: 500px;
+    padding-right: 300px;
+    padding-top: 30px;
+    /*padding-bottom: 50px;*/
+    /*background-color: #9FFCFD;*/
+    /*border-radius: 5px;*/
+    width: 100%;
+}
+
+.form {
+    width: 100%;
+}
+
+.input-wrapper {
+    margin-bottom: 12px;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+}
+
+.input label {
+    font-weight: bold;
+    width: 200px;
+}
+
+.input select {
+    margin-left: 12px;
+    padding: 6px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+}
+
+.bottom-center {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
