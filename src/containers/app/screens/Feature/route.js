@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import AppLayout from '~/components/Layout/AppLayout';
 import { initModules } from '~/router/index';
+import SettingBook from '~/containers/app/screens/Feature/pages/Demo/Admin/ManageBooks/Book';
 
 export const featureModule = {
     key: 'feature',
@@ -40,6 +41,26 @@ export const childRoutes = [
         }),
     },
     {
+        path: '/manage_books/update_book',
+        exact: true,
+        isPrivate: true,
+        layout: AppLayout,
+        component: lazy(async () => {
+            await initModules([featureModule], 'app');
+            return import('./pages/Demo/Admin/ManageBooks/Book/SettingBook');
+        }),
+    },
+    {
+        path: '/manage_books/modify_book',
+        exact: true,
+        isPrivate: true,
+        layout: AppLayout,
+        component: lazy(async () => {
+            await initModules([featureModule], 'app');
+            return import('./pages/Demo/Admin/ManageBooks/Modify_Book/BookImformation');
+        }),
+    },
+    {
         path: '/setting',
         exact: true,
         isPrivate: true,
@@ -57,26 +78,6 @@ export const childRoutes = [
         component: lazy(async () => {
             await initModules([featureModule], 'app');
             return import('./pages/Demo/User/UserReaders/Concerns');
-        }),
-    },
-    {
-        path: '/manage_book/add_book',
-        exact: true,
-        isPrivate: true,
-        layout: AppLayout,
-        component: lazy(async () => {
-            await initModules([featureModule], 'app');
-            return import('./pages/Demo/Admin/ManageBook/AddBook');
-        }),
-    },
-    {
-        path: '/manage_book/search_book',
-        exact: true,
-        isPrivate: true,
-        layout: AppLayout,
-        component: lazy(async () => {
-            await initModules([featureModule], 'app');
-            return import('./pages/Demo/Admin/ManageBook/SearchBook');
         }),
     },
     {
