@@ -122,3 +122,20 @@ export const apiUpdateInstitution = async (params) => {
         };
     }
 };
+
+export const apiRegisterUser = async (body) => {
+    try {
+        const response = await POST('/register', body, { isFullPath: false });
+        return {
+            state: REQUEST_STATE.SUCCESS,
+            data: response,
+        };
+    } catch (error) {
+        console.log('error', error);
+        return {
+            error: error,
+            state: REQUEST_STATE.ERROR,
+            data: {},
+        };
+    }
+};

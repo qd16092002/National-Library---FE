@@ -1,5 +1,11 @@
 import { REQUEST_STATE } from '~/app-configs';
-import { UPDATE_DOCUMENT_STORE_ADDRESS_SUCCESS } from '~/redux/actions/user';
+import {
+    REGISTER_USER,
+    REGISTER_USER_FAIL,
+    REGISTER_USER_SUCCESS,
+    RESET_REGISTER_USER,
+    UPDATE_DOCUMENT_STORE_ADDRESS_SUCCESS,
+} from '~/redux/actions/user';
 import { RESET_UPDATE_DOCUMENT_STORE_ADDRESS } from '~/redux/actions/user';
 import { CHECK_VALID_TOKEN_SUCCESS } from '~/redux/actions/user';
 import { RESET_CHECK_VALID_TOKEN } from '~/redux/actions/user';
@@ -17,6 +23,7 @@ const defaultState = {
     verifyAuthState: null, // for get profile
     deployMetamaskState: null,
     errorMessageKey: '',
+    registerState: null,
 };
 
 export default function userReducer(state = defaultState, action) {
@@ -100,6 +107,32 @@ export default function userReducer(state = defaultState, action) {
                 ...defaultState,
             };
         }
+        case REGISTER_USER().type: {
+            return {
+                ...state,
+                registerState: REQUEST_STATE.REQUEST,
+            };
+        }
+        case REGISTER_USER_SUCCESS().type: {
+            const { data } = action.payload;
+            return {
+                ...state,
+                data: data,
+                registerState: REQUEST_STATE.SUCCESS,
+            };
+        }
+        case REGISTER_USER_FAIL().type: {
+            return {
+                ...state,
+                registerState: REQUEST_STATE.ERROR,
+            };
+        }
+        case RESET_REGISTER_USER().type: {
+            return {
+                ...defaultState,
+            };
+        }
+
         default:
             return state;
     }

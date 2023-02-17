@@ -6,6 +6,7 @@ import { LogoutOutlined } from '@ant-design/icons';
 import hustLogo from '~/assets/images/header/hust-logo.jpeg';
 import { TOKEN_KEY } from '~/app-configs';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const userDropdownItems = [getNavItem('Đăng xuất', '/auth/logout', <LogoutOutlined />, null)];
 
@@ -17,12 +18,11 @@ const onClickUserAvatar = (item) => {
 
 function handleLogout() {
     localStorage.removeItem(TOKEN_KEY);
-    window.location.reload(false);
 }
 
 export default function (props) {
     const userDetail = useSelector((state) => state?.user?.profile);
-
+    const history = useHistory();
     return (
         <Header
             style={{
@@ -77,7 +77,15 @@ export default function (props) {
                     {userDetail?.name}
                 </div>
                 <Dropdown
-                    overlay={<Menu items={userDropdownItems} onClick={onClickUserAvatar} />}
+                    overlay={
+                        <Menu
+                            items={userDropdownItems}
+                            onClick={(e) => {
+                                onClickUserAvatar(e);
+                                history.push('/auth/login');
+                            }}
+                        />
+                    }
                     placement="bottomRight"
                     trigger={['click']}
                     arrow={{ pointAtCenter: true }}

@@ -75,3 +75,28 @@ export function RESET_CHECK_VALID_TOKEN(payload) {
         payload,
     };
 }
+
+export function REGISTER_USER(payload) {
+    return {
+        type: 'REGISTER_USER',
+        payload,
+    };
+}
+export function REGISTER_USER_SUCCESS(payload) {
+    return {
+        type: 'REGISTER_USER_SUCCESS',
+        payload,
+    };
+}
+export function REGISTER_USER_FAIL(payload) {
+    return {
+        type: 'REGISTER_USER_FAIL',
+        payload,
+    };
+}
+export function RESET_REGISTER_USER(payload) {
+    return {
+        type: 'RESET_REGISTER_USER',
+        payload,
+    };
+}
