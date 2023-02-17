@@ -100,3 +100,28 @@ export function RESET_REGISTER_USER(payload) {
         payload,
     };
 }
+
+export function LIST_USER(payload) {
+    return {
+        type: 'LIST_USER',
+        payload,
+    };
+}
+export function LIST_USER_SUCCESS(payload) {
+    return {
+        type: 'LIST_USER_SUCCESS',
+        payload,
+    };
+}
+export function LIST_USER_FAIL(payload) {
+    return {
+        type: 'LIST_USER_FAIL',
+        payload,
+    };
+}
+export function RESET_LIST_USER(payload) {
+    return {
+        type: 'RESET_LIST_USER',
+        payload,
+    };
+}

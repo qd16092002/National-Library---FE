@@ -1,8 +1,12 @@
 import { REQUEST_STATE } from '~/app-configs';
 import {
+    LIST_USER,
+    LIST_USER_FAIL,
+    LIST_USER_SUCCESS,
     REGISTER_USER,
     REGISTER_USER_FAIL,
     REGISTER_USER_SUCCESS,
+    RESET_LIST_USER,
     RESET_REGISTER_USER,
     UPDATE_DOCUMENT_STORE_ADDRESS_SUCCESS,
 } from '~/redux/actions/user';
@@ -23,6 +27,8 @@ const defaultState = {
     verifyAuthState: null, // for get profile
     deployMetamaskState: null,
     errorMessageKey: '',
+    state: null,
+    list: null,
     registerState: null,
 };
 
@@ -130,6 +136,31 @@ export default function userReducer(state = defaultState, action) {
         case RESET_REGISTER_USER().type: {
             return {
                 ...defaultState,
+            };
+        }
+        case LIST_USER().type: {
+            return {
+                ...state,
+                state: REQUEST_STATE.REQUEST,
+            };
+        }
+        case LIST_USER_SUCCESS().type: {
+            return {
+                ...state,
+                list: action.payload,
+                state: REQUEST_STATE.SUCCESS,
+            };
+        }
+        case LIST_USER_FAIL().type: {
+            return {
+                ...state,
+                state: REQUEST_STATE.ERROR,
+            };
+        }
+        case RESET_LIST_USER().type: {
+            return {
+                ...defaultState,
+                state: null,
             };
         }
 

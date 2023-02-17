@@ -21,6 +21,23 @@ export const apiListIssuer = async (params) => {
     }
 };
 
+export const apiGetUser = async (params) => {
+    try {
+        const response = await GET('/user', params, { isFullPath: false });
+        return {
+            state: REQUEST_STATE.SUCCESS,
+            data: response,
+        };
+    } catch (error) {
+        console.log('error', error);
+        return {
+            error: error,
+            state: REQUEST_STATE.ERROR,
+            data: {},
+        };
+    }
+};
+
 export const apiCreateIssuer = async (params) => {
     try {
         const response = await POST('/issuer/create', params, { isFullPath: false });
