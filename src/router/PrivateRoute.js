@@ -10,8 +10,8 @@ import { CHECK_VALID_TOKEN } from '~/redux/actions/user';
 
 function PrivateRoute({ component: Component, location, ...rest }) {
     const dispatch = useDispatch();
-    // const isAuthencate = useSelector((state) => state.user?.verifyAuthState);
-    const isAuthencate = REQUEST_STATE.SUCCESS;
+    const isAuthencate = useSelector((state) => state.user?.verifyAuthState);
+    // const isAuthencate = REQUEST_STATE.SUCCESS;
 
     useEffect(() => {
         (async () => {

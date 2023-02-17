@@ -1,7 +1,7 @@
 import { TOKEN_KEY } from '~/app-configs';
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-function PublicRoute({ component: Component, needCheckToken = true, ...rest }) {
+function PublicRoute({ component: Component, needCheckToken = false, ...rest }) {
     if (localStorage.getItem(TOKEN_KEY) && needCheckToken) {
         return <Redirect to="/" />;
     } else

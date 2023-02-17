@@ -268,10 +268,7 @@ const Login = () => {
                                                     <Col xs={8}>Số điện thoại</Col>
                                                     <Col xs={16}>
                                                         <div className={cx('input')}>
-                                                            <AppInput
-                                                                name="phonenumber"
-                                                                placeholder="Nhập Số điện thoại"
-                                                            />
+                                                            <AppInput name="phone" placeholder="Nhập Số điện thoại" />
                                                         </div>
                                                     </Col>
                                                 </Row>

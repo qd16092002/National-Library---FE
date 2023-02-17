@@ -11,7 +11,7 @@ export const featureModule = {
 export default {
     path: '/',
     exact: true,
-    isPrivate: true,
+    isPrivate: false,
     layout: AppLayout,
     component: lazy(async () => {
         await initModules([featureModule], 'app');
@@ -23,7 +23,7 @@ export const childRoutes = [
     {
         path: '/manage_readers/view_personal',
         exact: true,
-        isPrivate: true,
+        isPrivate: false,
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
@@ -33,7 +33,7 @@ export const childRoutes = [
     {
         path: '/manage_readers/search_personal',
         exact: true,
-        isPrivate: true,
+        isPrivate: false,
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
@@ -43,7 +43,7 @@ export const childRoutes = [
     {
         path: '/manage_books/update_book',
         exact: true,
-        isPrivate: true,
+        isPrivate: false,
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
@@ -53,7 +53,7 @@ export const childRoutes = [
     {
         path: '/user_books/search_book',
         exact: true,
-        isPrivate: true,
+        isPrivate: false,
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
@@ -63,7 +63,7 @@ export const childRoutes = [
     {
         path: '/manage_books/modify_book',
         exact: true,
-        isPrivate: true,
+        isPrivate: false,
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
@@ -73,7 +73,7 @@ export const childRoutes = [
     {
         path: '/user_books/borrowing_book',
         exact: true,
-        isPrivate: true,
+        isPrivate: false,
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
@@ -83,7 +83,7 @@ export const childRoutes = [
     {
         path: '/setting',
         exact: true,
-        isPrivate: true,
+        isPrivate: false,
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
@@ -93,7 +93,7 @@ export const childRoutes = [
     {
         path: '/user_readers/concerns',
         exact: true,
-        isPrivate: true,
+        isPrivate: false,
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
@@ -103,7 +103,7 @@ export const childRoutes = [
     {
         path: '/user_card/review_card',
         exact: true,
-        isPrivate: true,
+        isPrivate: false,
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
@@ -113,7 +113,7 @@ export const childRoutes = [
     {
         path: '/manage_card/show_card_list',
         exact: true,
-        isPrivate: true,
+        isPrivate: false,
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');
@@ -123,7 +123,7 @@ export const childRoutes = [
     {
         path: '/user_card/regist_card',
         exact: true,
-        isPrivate: true,
+        isPrivate: false,
         layout: AppLayout,
         component: lazy(async () => {
             await initModules([featureModule], 'app');

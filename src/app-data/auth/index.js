@@ -13,6 +13,7 @@ const BASE_URL = '';
 export const apiLogin = async (params) => {
     try {
         const response = await POST('/login', params, { isFullPath: false });
+
         return {
             state: REQUEST_STATE.SUCCESS,
             data: response,
@@ -30,9 +31,9 @@ export const apiLogin = async (params) => {
 export const apiProfile = async () => {
     try {
         const response = await GET(
-            '/institution',
+            '/user/profile',
             {
-                token: localStorage.getItem(TOKEN_KEY),
+                // token: localStorage.getItem(TOKEN_KEY),
             },
             { isFullPath: false },
         );
