@@ -2,3 +2,12 @@
 
 ## Developer 
 - Trần Quang Đạo
+## Project setup
+```
+npm install
+```
+
+### Run
+```
+npm start
+```
