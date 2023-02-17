@@ -1,5 +1,5 @@
 export const Configs = {
-    BASE_API: process.env.REACT_APP_BASE_API_URL,
+    BASE_API: 'http://localhost:8080',
     DOMAIN: '',
 
     CURRENT_PAGE: 1,

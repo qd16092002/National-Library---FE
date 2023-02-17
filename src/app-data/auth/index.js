@@ -2,7 +2,7 @@ import { TOKEN_KEY } from '~/app-configs';
 import { REQUEST_STATE } from '~/app-configs';
 import { POST } from '~/app-data/fetch';
 import { GET } from '~/app-data/fetch';
-// const BASE_URL = 'http://localhost:8080/StudentMgr'
+const BASE_URL = '';
 
 // Sinh Vien
 // const API_STUDENT_LIST = '/api/student/list'
@@ -12,7 +12,7 @@ import { GET } from '~/app-data/fetch';
 
 export const apiLogin = async (params) => {
     try {
-        const response = await POST('/auth/institution/login', params, { isFullPath: false });
+        const response = await POST('/login', params, { isFullPath: false });
         return {
             state: REQUEST_STATE.SUCCESS,
             data: response,
