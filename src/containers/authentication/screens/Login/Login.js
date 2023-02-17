@@ -277,11 +277,21 @@ const Login = () => {
                                                 </Row>
                                             </Col>
                                             <Col xs={24}>
+                                                <Row className={cx('input-wrapper')}>
+                                                    <Col xs={8}>Mã độc giả</Col>
+                                                    <Col xs={16}>
+                                                        <div className={cx('input')}>
+                                                            <AppInput name="codeStudent" placeholder="Mã độc giả" />
+                                                        </div>
+                                                    </Col>
+                                                </Row>
+                                            </Col>
+                                            <Col xs={24}>
                                                 <AppButton
                                                     type="submit"
                                                     isLoading={registerState === REQUEST_STATE.REQUEST}
                                                 >
-                                                    XN
+                                                    Đăng ký
                                                 </AppButton>
                                             </Col>
                                         </Row>
